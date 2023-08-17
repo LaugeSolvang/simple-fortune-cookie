@@ -25,7 +25,5 @@ jobs:
         uses: actions/setup-go@v4
         with:
           go-version: '1.21.0'
-      - name: Install dependencies
-        run: go get .
       - name: Test with the Go CLI
         run: go test
