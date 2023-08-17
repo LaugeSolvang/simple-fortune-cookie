@@ -10,3 +10,16 @@ services:
       BACKEND_DNS: backend
   backend:
     build: ./backend
+    depends_on:
+      - redis
+    environment:
+      REDIS_DNS: redis
+
+  redis:
+    image: redis:latest
+    ports:
+      - 6379:6379
+
+
+volumes:
+  redis-data:
