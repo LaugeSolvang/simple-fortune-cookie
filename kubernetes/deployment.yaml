@@ -15,9 +15,5 @@ spec:
         app: fortune-cookie
     spec:
       containers:
-        - name: fortune-cookie-frontend
-          image:
-          ports:
-            - containerPort: 80
-        - name: fortune-cookie-backend
-          image:
+        - name: fortune-cookie
+          image: 
