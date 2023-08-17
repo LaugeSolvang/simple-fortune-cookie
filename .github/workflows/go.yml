@@ -26,6 +26,7 @@ jobs:
 
     - name: Build backend
       run: cd backend && go build -v 
-
+      
+# running test for website 
     - name: Test
       run: cd frontend && go test -v 
