@@ -1,8 +1,7 @@
-FROM golang:1.18 
+FROM golang:1.21
 WORKDIR /app
-COPY . .
+COPY . /app
 RUN go mod download && go mod verify
-RUN go build -o backend .
+RUN cd /app && go build -o goapp
 
-
-CMD ["./backend"]
+ENTRYPOINT ./goapp
