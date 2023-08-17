@@ -23,9 +23,14 @@ jobs:
 
     - name: Build frontend 
       run: cd frontend && go build -v
-      
+
     - name: Build backend
       run: cd backend && go build -v 
 
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
     - name: Test
       run: cd frontend && go test -v 
