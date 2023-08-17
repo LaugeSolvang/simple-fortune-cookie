@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "test" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "development" ]
 
 jobs:
 
@@ -29,3 +29,7 @@ jobs:
 
     - name: Test backend
       run: cd frontend && go test -v
+
+    - name: Set up Docker
+      uses: docker/setup-buildx-action@v1
+
