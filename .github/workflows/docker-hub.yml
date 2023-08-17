@@ -1,0 +1,14 @@
+name: dockerhub
+
+on:
+  push:
+    branches: [ "03-container-registry" ]
+  pull_request:
+    branches: [ "development" ]  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
