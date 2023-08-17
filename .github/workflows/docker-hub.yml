@@ -51,6 +51,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
+# build to dockerhub
       - name: Build and push frontend Docker image
         uses: docker/build-push-action@v2
         with:
