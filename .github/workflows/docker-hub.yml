@@ -84,10 +84,10 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME2 }}
 
 # build backend to dockerhub
-      - name: Build and push frontend Docker image
+      - name: Build and push backend Docker image
         uses: docker/build-push-action@v2
         with:
-          context: ./frontend
+          context: ./backend
           push: true
           tags: ${{ steps.meta2.outputs.tags }}
           labels: ${{ steps.meta2.outputs.labels }}
