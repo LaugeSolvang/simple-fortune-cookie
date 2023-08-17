@@ -1,7 +1,10 @@
-FROM golang:1.21
+FROM golang:1.21 as build
 WORKDIR /app
-COPY . /app
+COPY . .
 RUN go mod download && go mod verify
-RUN cd /app && go build -o goapp
+RUN CGO_ENABLED=0 go build -o ./goapp -a -ldflags '-extldflags "-static"' . 
 
-ENTRYPOINT ./goapp
+FROM scratch
+WORKDIR /
+COPY --from=build app/goapp /
+ENTRYPOINT ["./goapp"]
