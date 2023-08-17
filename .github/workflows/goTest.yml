@@ -20,12 +20,12 @@ jobs:
 
     - name: Build frontend 
       run: cd frontend && go build -v
+
+    - name: Test frontend
+      run: cd frontend && go test -v 
       
     - name: Build backend
       run: cd backend && go build -v 
 
-    - name: frontend Test
-      run: cd frontend && go test -v 
-
-    - name: backend Test
+    - name: Test backend
       run: cd frontend && go test -v
