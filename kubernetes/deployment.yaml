@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fortune-cookie
+  labels:
+    app: fortune-cookie
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fortune-cookie
+  template:
+    metadata:
+      labels:
+        app: fortune-cookie
+    spec:
+      containers:
+        - name: fortune-cookie-frontend
+          image:
+          ports:
+            - containerPort: 80
+        - name: fortune-cookie-backend
+          image:
