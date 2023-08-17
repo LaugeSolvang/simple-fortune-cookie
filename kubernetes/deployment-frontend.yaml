@@ -18,7 +18,7 @@ spec:
         - name: frontend
           image: gnavlos/frontend:latest
           env:
-            - name: BACKEND_HOST
+            - name: BACKEND_DNS
               value: backend
             - name: BACKEND_PORT
               value: '9000'

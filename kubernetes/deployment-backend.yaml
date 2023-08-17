@@ -15,5 +15,7 @@ spec:
         app: backend # pod labels that must match selector
     spec:
       containers:
-        - name: backend # name of the container running inside a pod, different from the pod name
+        - name: backend
           image: gnavlos/backend:latest
+          ports:
+            - containerPort: 9000
