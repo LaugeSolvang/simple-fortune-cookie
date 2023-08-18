@@ -11,6 +11,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: deploy kubernetes
+    - name: get kubeconfig
       run: echo "${{ secrets.KUBECONFIG }}" | base64 -d > kubeconfig
-    - run: kubectl --kubeconfig kubeconfig <your kubectl commands>
+      
+    - name: deploy kubernetes
+      run: kubectl --kubeconfig kubeconfig <your kubectl commands>
