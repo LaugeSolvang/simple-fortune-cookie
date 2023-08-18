@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: gnavlos/frontend:latest
+          image: gnavlos/frontend:03-container-registry
           env:
             - name: BACKEND_DNS
               value: backend

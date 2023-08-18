@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: backend
-          image: gnavlos/backend:latest
+          image: gnavlos/backend:03-container-registry
           ports:
             - containerPort: 9000
