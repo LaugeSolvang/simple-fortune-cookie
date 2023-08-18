@@ -26,4 +26,7 @@ spec:
     spec:
       containers:
         - name: fortune-cookie
-          image: "IMAGE_NAME"
+          image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          limits:
+          - default:
+            memory: 512Mi
