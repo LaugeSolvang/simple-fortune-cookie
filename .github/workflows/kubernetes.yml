@@ -17,7 +17,7 @@ jobs:
 
     - name: Set up kubectl
       run: |
-        echo "$KUBE_CONFIG" | base64 -d > kubeconfig.yaml
+        echo "$KUBECONFIG" | base64 -d > kubeconfig.yaml
 
     - name: Deploy to Kubernetes
       run: |
