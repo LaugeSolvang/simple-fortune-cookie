@@ -1,3 +1,5 @@
+name: Kubernetes automatic deployment
+
 on:
   push:
     branches: [ "04-cd" ]
@@ -18,5 +20,5 @@ jobs:
 
     - name: Deploy to Kubernetes
       run: |
-        echo "$KUBECONFIG" | base64 -d > kubeconfig.yaml
+        echo "$KUBECONFIG" | base64 -d > kubeconfig.yml
         kubectl apply -f kubernetes/ --kubeconfig <(echo "$KUBECONFIG")
