@@ -5,14 +5,13 @@ on:
   pull_request:
     branches: [ "development" ]
 
+env:
+  BACKEND_IMAGE: gnavlos/backend:03-container-registry
+  FRONTEND_IMAGE: gnavlos/frontend:03-container-registry
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: dev
     steps:
-    - uses: actions/checkout@v3
-
-    - name: get kubeconfig
-      run: echo "${{ secrets.KUBECONFIG }}" | base64 -d > kubeconfig
-      
-    - name: deploy kubernetes
-      run: kubectl --kubeconfig kubeconfig <your kubectl commands>
+    - uses: actions/checkout@master
