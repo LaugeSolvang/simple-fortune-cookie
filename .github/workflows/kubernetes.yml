@@ -15,11 +15,9 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up kubectl
-      run: |
-        echo "$KUBECONFIG" | base64 -d > kubeconfig.yaml
+    - name: Set up Docker
+      uses: docker/setup-buildx-action@v1
 
     - name: Deploy to Kubernetes
       run: |
-        cd kubernetes
-        kubectl apply -f . --kubeconfig kubeconfig.yaml
+        kubectl apply -f kubernetes/ --kubeconfig <(echo "$KUBECONFIG")
