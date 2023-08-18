@@ -4,6 +4,12 @@ metadata:
   name: fortune-cookie
   labels:
     app: fortune-cookie
+env:
+  # Use docker.io for Docker Hub if empty
+  REGISTRY: docker.io
+  # github.repository as <account>/<repo>
+  IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/backend
+
 spec:
   replicas: 1
   selector:
@@ -20,4 +26,4 @@ spec:
     spec:
       containers:
         - name: fortune-cookie
-          image:
+          image: "IMAGE_NAME"
