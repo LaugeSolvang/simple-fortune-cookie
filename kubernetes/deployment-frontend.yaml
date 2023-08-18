@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend # deployment resource name, pods running as a part of the deployment will share the name.
+  labels:
+    app: frontend # deployment resource label
+spec:
+  replicas: 1 # number of pods to run
+  selector:
+    matchLabels: # selector labels the replicaset looks for
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend # pod labels that must match selector
+    spec:
+      containers:
+        - name: frontend
+          image: gnavlos/frontend:03-container-registry
+          env:
+            - name: BACKEND_DNS
+              value: backend
+            - name: BACKEND_PORT
+              value: '9000'
