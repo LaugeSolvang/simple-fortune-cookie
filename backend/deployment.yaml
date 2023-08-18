@@ -9,11 +9,15 @@ spec:
   selector:
     matchLabels:
       app: fortune-cookie
+      tier: backend
+      track: stable
   template:
     metadata:
       labels:
         app: fortune-cookie
+        tier: backend
+        track: stable
     spec:
       containers:
         - name: fortune-cookie
-          image: 
+          image:
