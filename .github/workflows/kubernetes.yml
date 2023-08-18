@@ -22,4 +22,4 @@ jobs:
     - name: Deploy to Kubernetes
       run: |
         cd kubernetes
-        kubectl apply -f .
+        kubectl apply -f . --kubeconfig kubeconfig.yaml
