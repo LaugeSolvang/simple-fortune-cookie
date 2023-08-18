@@ -16,9 +16,9 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up KUBECONFIG
+    - name: Decode KUBECONFIG to setup kubectl
       run: |
-        echo "$KUBECONFIG" > kubeconfig.yaml
+        echo "$KUBECONFIG" | base64 -d > kubeconfig.yaml
 
     - name: Deploy to Kubernetes
       run: |
