@@ -9,24 +9,11 @@ env:
   FRONTEND_IMAGE: gnavlos/frontend:03-container-registry
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
-    - name: Set up Docker
-      uses: docker/setup-buildx-action@v1
-
-    - name: Build and push backend image
-      run: |
-        docker buildx create --use
-        docker buildx build --tag $BACKEND_IMAGE ./backend --push
-
-    - name: Build and push frontend image
-      run: |
-        docker buildx create --use
-        docker buildx build --tag $FRONTEND_IMAGE ./frontend --push
 
     - name: Set up kubectl
       uses: azure/k8s-set-context@v1
