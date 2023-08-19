@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ "test" ]
+    branches: [ "redis-kubernetes" ]
   pull_request:
     branches: [ "development" ]
 
