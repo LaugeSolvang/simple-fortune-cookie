@@ -22,4 +22,4 @@ jobs:
       run: echo "$KUBECONFIG" | base64 -d > kubeconfig.yml
 
     - name: Deploy to Kubernetes
-      run: kubectl apply -f kubernetes/ --kubeconfig <(echo "$KUBECONFIG")
+      run: cd kubernetes && kubectl apply -f .  --kubeconfig <(echo "$KUBECONFIG")
