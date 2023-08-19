@@ -24,13 +24,11 @@ jobs:
     
     - name: Build and push backend image
       run: |
-          docker buildx build --tag $BACKEND_IMAGE ./backend
-          docker push $BACKEND_IMAGE
+          docker buildx build --tag $BACKEND_IMAGE --push ./backend
 
     - name: Build and push frontend image
       run: |
-          docker buildx build --tag $FRONTEND_IMAGE ./frontend
-          docker push $FRONTEND_IMAGE    
+          docker buildx build --tag $FRONTEND_IMAGE --push ./frontend    
 
     - name: Setting kubeconfig
       run: echo "$KUBECONFIG" | base64 -d > kubernetes/kubeconfig
