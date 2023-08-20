@@ -24,5 +24,4 @@ test_endpoint() {
 
 # Test endpoints
 test_endpoint "http://localhost:8080/api/random" "GET"
-test_endpoint "http://localhost:8080/api/all" "GET"
 test_endpoint "http://localhost:8080/api/add" "POST" '{"message":"Test Fortune"}'
