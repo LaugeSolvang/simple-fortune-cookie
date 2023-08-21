@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "redis-kubernetes" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "development" ]
 
 jobs:
 
@@ -29,3 +29,26 @@ jobs:
 
     - name: Test backend
       run: cd frontend && go test -v
+
+    - name: Set up Docker
+      uses: docker/setup-buildx-action@v1
+
+    - name: Build and start services
+      run: docker-compose up --build -d
+
+    - name: Test application availability
+      run: |
+        sleep 15 
+        curl http://localhost:8080
+      continue-on-error: true
+
+    - name: Set script permissions
+      run: chmod +x scripts/test_endpoints.sh
+
+    - name: Test application endpoints
+      run: ./scripts/test_endpoints.sh
+
+    - name: Tear down services
+      run: docker-compose down
+
+

@@ -1,0 +1,39 @@
+name: Kubernetes automatic deployment
+
+  
+on:
+  push:
+    branches: [ "04-cd" ]
+  pull_request:
+    branches: [ "development" ]
+
+env:
+  BACKEND_IMAGE: gnavlos/backend:03-container-registry
+  FRONTEND_IMAGE: gnavlos/frontend:03-container-registry
+  KUBECONFIG: ${{ secrets.KUBECONFIG }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+#    - name: Setting up Docker
+#      uses: docker/setup-buildx-action@v1
+    
+#    - name: Build and push backend image
+#      run: |
+#         docker buildx build --tag $BACKEND_IMAGE --push ./backend
+
+#    - name: Build and push frontend image
+#      run: |
+#          docker buildx build --tag $FRONTEND_IMAGE --push ./frontend    
+
+    - name: Setting kubeconfig
+      run: echo "$KUBECONFIG" | base64 -d > kubernetes/kubeconfig
+
+    - name: Deploy to Kubernetes
+      run: | 
+        cd kubernetes
+        kubectl apply -f . --kubeconfig kubeconfig
