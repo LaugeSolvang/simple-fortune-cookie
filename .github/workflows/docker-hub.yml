@@ -1,8 +1,6 @@
 name: dockerhub
 
 on:
-  push:
-    branches: [ "03-container-registry" ]
   pull_request:
     branches: [ "development" ]  
 
