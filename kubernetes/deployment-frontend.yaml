@@ -19,6 +19,12 @@ spec:
           image: gnavlos/frontend:03-container-registry
           env:
             - name: BACKEND_DNS
-              value: backend
+              valueFrom:
+                configMapKeyRef:
+                  name: frontend-configmap.yaml
+                  key: BACKEND_DNS
             - name: BACKEND_PORT
-              value: '9000'
+              valueFrom:
+                configMapKeyRef:
+                  name: frontend-configmap.yaml
+                  key: BACKEND_PORT
